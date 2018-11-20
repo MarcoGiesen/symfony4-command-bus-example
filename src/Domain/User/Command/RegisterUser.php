@@ -49,9 +49,9 @@ class RegisterUser implements CommandInterface
      */
     public function __construct(array $payload)
     {
-        $this->uuid = Uuid::uuid1();
+        $this->uuid = Uuid::uuid4();
         $this->username = $payload['username'];
         $this->email = $payload['email'];
-        $this->acceptedBusinessTermsTimestamp = new \DateTime($payload['acceptedBusinessTermsTimestamp']);
+        $this->acceptedBusinessTermsTimestamp = new \DateTimeImmutable($payload['acceptedBusinessTermsTimestamp']);
     }
 }

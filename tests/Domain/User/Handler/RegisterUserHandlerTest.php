@@ -2,6 +2,7 @@
 
 namespace App\Tests\Domain\User\Handler;
 
+use App\Domain\CommandInterface;
 use App\Domain\User\Command\RegisterUser;
 use App\Domain\User\Command\RegisterUserFake;
 use App\Domain\User\Entity\User;
@@ -34,15 +35,9 @@ class RegisterUserHandlerTest extends KernelTestCase
 
         $handler = new RegisterUserHandler($this->prophesize(EntityManager::class)->reveal());
 
-        $payload = [
-            'username' => 'user',
-            'email' => 'asdad@sdad.de',
-            'acceptedBusinessTermsTimestamp' => '',
-        ];
+        $class = new class implements CommandInterface {};
 
-        $request = new RegisterUserFake($payload);
-
-        $handler->handle($request);
+        $handler->handle($class);
     }
 
     /**
