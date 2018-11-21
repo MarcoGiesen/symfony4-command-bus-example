@@ -32,7 +32,7 @@ class ChangeUserEmailHandlerTest extends KernelTestCase
      */
     private function getEntityManagerMock(): ObjectProphecy
     {
-        $user = new User('0c35dda0-eca0-11e8-b7fe-02249769545f', 'user', 'test@mail.de', new \DateTime());
+        $user = new User('0c35dda0-eca0-11e8-b7fe-02249769545f', 'user', 'test@mail.de', new \DateTimeImmutable());
 
         $userRepositoryMock = $this->prophesize(EntityRepository::class);
         $userRepositoryMock->find(Argument::any())->willReturn($user);
