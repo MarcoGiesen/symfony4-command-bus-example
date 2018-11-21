@@ -5,7 +5,7 @@ namespace App\Domain;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Validator\Constraints as Assert;
 
-abstract class CreateCommand
+abstract class CreateCommand implements CommandInterface
 {
     /**
      * @var Uuid
