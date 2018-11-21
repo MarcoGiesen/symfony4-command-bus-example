@@ -29,7 +29,7 @@ class ChangeUserEmailHandler implements HandlerInterface
         $userRepository = $this->entityManager->getRepository(User::class);
 
         /** @var User $user */
-        $user = $userRepository->find($command->uuid->toString());
+        $user = $userRepository->find($command->uuid);
 
         $user->changeEmail($command->email);
 

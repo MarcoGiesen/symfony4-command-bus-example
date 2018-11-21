@@ -4,12 +4,12 @@ namespace App\Tests\Domain\User\Handler;
 
 use App\Domain\CommandInterface;
 use App\Domain\User\Command\RegisterUser;
-use App\Domain\User\Command\RegisterUserFake;
 use App\Domain\User\Entity\User;
 use App\Domain\User\Handler\RegisterUserHandler;
 use Doctrine\ORM\EntityManager;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
+use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class RegisterUserHandlerTest extends KernelTestCase
@@ -25,6 +25,8 @@ class RegisterUserHandlerTest extends KernelTestCase
         ];
 
         $request = new RegisterUser($payload);
+
+        $request->uuid = Uuid::uuid4();
 
         $handler->handle($request);
     }

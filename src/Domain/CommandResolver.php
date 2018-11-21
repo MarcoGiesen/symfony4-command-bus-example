@@ -6,6 +6,7 @@ namespace App\Domain;
 
 use App\Domain\Exception\InvalidCommandException;
 use App\Domain\Exception\ValidationException;
+use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -30,6 +31,13 @@ class CommandResolver
         }
 
         $command = new $commandClass($payload);
+
+        if (\array_key_exists(UuidAwareInterface::class, $parents)
+            && array_key_exists(UuidAwareTrait::class, \class_uses($command))
+        ) {
+            $command->uuid = Uuid::uuid4();
+        }
+
         $violations = $this->validator->validate($command);
 
         if (\count($violations) === 0) {

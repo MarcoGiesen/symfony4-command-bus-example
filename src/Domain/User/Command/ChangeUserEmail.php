@@ -5,16 +5,14 @@ declare(strict_types=1);
 namespace App\Domain\User\Command;
 
 use App\Domain\CommandInterface;
-use Ramsey\Uuid\Uuid;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class ChangeUserEmail implements CommandInterface
 {
     /**
-     * @var Uuid
+     * @var string
      *
      * @Assert\NotBlank()
-     * @Assert\Uuid()
      */
     public $uuid;
 
@@ -33,7 +31,7 @@ class ChangeUserEmail implements CommandInterface
      */
     public function __construct(array $payload)
     {
-        $this->uuid = Uuid::fromString($payload['uuid']);
+        $this->uuid = $payload['uuid'];
         $this->email = $payload['email'];
     }
 }
