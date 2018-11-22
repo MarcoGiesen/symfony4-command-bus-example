@@ -26,11 +26,6 @@ class ChangeUserEmail implements CommandInterface
      */
     public $email;
 
-    /**
-     * RegisterUser constructor.
-     * @param array $payload
-     * @throws \Exception
-     */
     public function __construct(array $payload)
     {
         $this->uuid = Uuid::fromString($payload['uuid']);
