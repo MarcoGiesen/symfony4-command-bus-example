@@ -34,11 +34,6 @@ class RegisterUser extends CreateCommand implements CommandInterface
      */
     public $acceptedBusinessTermsTimestamp;
 
-    /**
-     * RegisterUser constructor.
-     * @param array $payload
-     * @throws \Exception
-     */
     public function __construct(array $payload)
     {
         parent::__construct();
