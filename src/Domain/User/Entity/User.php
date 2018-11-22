@@ -38,14 +38,7 @@ class User
      */
     protected $acceptedBusinessTermsTimestamp;
 
-    /**
-     * User constructor.
-     * @param string $id
-     * @param string $userName
-     * @param string $email
-     * @param \DateTime $acceptedBusinessTermsTimestamp
-     */
-    public function __construct(string $id, string $userName, string $email, \DateTime $acceptedBusinessTermsTimestamp)
+    public function __construct(string $id, string $userName, string $email, \DateTimeImmutable $acceptedBusinessTermsTimestamp)
     {
         $this->id = $id;
         $this->userName = $userName;

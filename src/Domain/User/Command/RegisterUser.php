@@ -5,19 +5,11 @@ declare(strict_types=1);
 namespace App\Domain\User\Command;
 
 use App\Domain\CommandInterface;
-use Ramsey\Uuid\Uuid;
+use App\Domain\CreateCommand;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class RegisterUser implements CommandInterface
+class RegisterUser extends CreateCommand implements CommandInterface
 {
-    /**
-     * @var Uuid
-     *
-     * @Assert\NotBlank()
-     * @Assert\Uuid()
-     */
-    public $uuid;
-
     /**
      * @var string
      *
@@ -42,14 +34,9 @@ class RegisterUser implements CommandInterface
      */
     public $acceptedBusinessTermsTimestamp;
 
-    /**
-     * RegisterUser constructor.
-     * @param array $payload
-     * @throws \Exception
-     */
     public function __construct(array $payload)
     {
-        $this->uuid = Uuid::uuid4();
+        parent::__construct();
         $this->username = $payload['username'];
         $this->email = $payload['email'];
         $this->acceptedBusinessTermsTimestamp = new \DateTimeImmutable($payload['acceptedBusinessTermsTimestamp']);

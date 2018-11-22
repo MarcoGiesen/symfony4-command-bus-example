@@ -9,9 +9,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class CommandBus
 {
-    /**
-     * @var ContainerInterface
-     */
     private $container;
 
     public function __construct(ContainerInterface $container)
